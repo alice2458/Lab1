@@ -352,6 +352,7 @@ public class ShiYan1
 					}
 					System.out.println();
 				}
+				System.out.println("测试测试！");
 				break;
 			case 2:
 				System.out.println("请输入要插入桥接词的新文本:");
@@ -359,6 +360,7 @@ public class ShiYan1
 				String NewWord = input.nextLine();
 				String Bridge = generateNewText(G, NewWord);
 				System.out.println(Bridge);
+				System.out.println("测试测试！");
 				break;
 			case 3:
 				System.out.println("请输入要查询最短路径的单词：");
@@ -366,6 +368,7 @@ public class ShiYan1
 				String word4 = input.next();
 				ShiYan1 c = new ShiYan1();
 				c.calcShortestPath(G, word3, word4);
+				System.out.println("测试测试！");
 				break;
 			case 4:
 				System.out.println("游走开始：（Y继续，N结束）");
@@ -391,13 +394,16 @@ public class ShiYan1
 					out.print(resultwords[i]+" ");
 				}
 				System.out.println();
+				System.out.println("测试测试！");
 				break;
 			case 5:
+				System.out.println("测试测试！");
 				break;
 			}
 			if (function == 5)
 			{
 				System.out.println("结束");
+				System.out.println("测试测试！");
 				break;
 			}
 		}
