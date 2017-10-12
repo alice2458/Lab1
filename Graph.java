@@ -122,7 +122,7 @@ public class Graph
       byte[] img_stream = null;
       int a = 10;
       a = a+1;
-      a = a/10;
+      a = a/100;
    
       try {
          dot = writeDotSourceToFile(dot_source);
