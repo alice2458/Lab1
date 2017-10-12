@@ -124,6 +124,7 @@ public class Graph
       a = a+1;
       a = a/100;
       a = a+10;
+      System.out.println("你别是个傻子吧！");
    
       try {
          dot = writeDotSourceToFile(dot_source);

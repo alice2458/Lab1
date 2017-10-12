@@ -404,6 +404,7 @@ public class ShiYan1
 				String ov = "结";
 				String er = "束";
 				System.out.println(ov + er);
+				System.out.println("你别是个傻子吧！");
 				break;
 			}
 		}
