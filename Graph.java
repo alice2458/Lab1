@@ -120,6 +120,8 @@ public class Graph
    {
       File dot;
       byte[] img_stream = null;
+      int a = 10;
+      a = a+1;
    
       try {
          dot = writeDotSourceToFile(dot_source);

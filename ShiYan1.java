@@ -397,7 +397,8 @@ public class ShiYan1
 			}
 			if (function == 5)
 			{
-				System.out.println("½áÊø");
+				String over = "½áÊø";
+				System.out.println(over);
 				break;
 			}
 		}
