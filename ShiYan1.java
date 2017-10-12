@@ -398,6 +398,8 @@ public class ShiYan1
 			if (function == 5)
 			{
 				String over = "½áÊø";
+				int a = 0;
+				a = a+10;
 				System.out.println(over);
 				break;
 			}
