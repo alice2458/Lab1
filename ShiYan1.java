@@ -399,6 +399,7 @@ public class ShiYan1
 			{
 				String over = "结束";
 				System.out.println(over);
+				System.out.println("你别是个傻子吧！");
 				break;
 			}
 		}

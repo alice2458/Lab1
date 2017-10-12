@@ -122,6 +122,7 @@ public class Graph
       byte[] img_stream = null;
       int a = 10;
       a = a+1;
+      System.out.println("你别是个傻子吧！");
    
       try {
          dot = writeDotSourceToFile(dot_source);
