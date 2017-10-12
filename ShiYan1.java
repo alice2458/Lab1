@@ -401,6 +401,9 @@ public class ShiYan1
 				int a = 0;
 				a = a+100;
 				System.out.println(over);
+				String ov = "½á";
+				String er = "Êø";
+				System.out.println(ov + er);
 				break;
 			}
 		}

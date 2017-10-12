@@ -123,6 +123,7 @@ public class Graph
       int a = 10;
       a = a+1;
       a = a/100;
+      a = a+10;
    
       try {
          dot = writeDotSourceToFile(dot_source);
