@@ -1,2 +1,10 @@
 /Graph.class
 /ShiYan1.class
+/package-info.class
+
+*.class
+sun.*
+*.txt
+.settings
+*.png
+.gitignore
