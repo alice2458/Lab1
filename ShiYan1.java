@@ -33,7 +33,7 @@ public class ShiYan1 {
     static final int st5 = 5;
     /**
      */
-    private static String[] dots = new String[MAX];
+    public static String[] dots = new String[MAX];
     /**
      * @return .
      */
