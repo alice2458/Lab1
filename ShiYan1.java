@@ -79,6 +79,9 @@ public class ShiYan1 {
         filename = filename.replaceAll("[^a-zA-Z]", " ");
         filename = filename.toLowerCase(Locale.US);
         filename = filename.replaceAll(" +", " ");
+        int[][] flag = new int[2][2];
+        if (filename.length() <= 0)
+        	return flag;
         filename = filename.substring(1, filename.length());
         String[] words = new String[MAX];
         words = filename.split(" ");
@@ -295,21 +298,9 @@ public class ShiYan1 {
                     flag = flag + 1;
                 }
             }
-            for (int i = flag; i < dotsNum(); i++) {
-                eff[i] = -1;
-            }
-            int m = 0;
-            for (int i = 0; i < dotsNum(); i++) {
-                if (eff[i] == -1) {
-                	break;
-                } else {
-                	m = m + 1;
-                }
-            }
-            if (m == 0) {
-                break;
-            }
-            final int k = r.nextInt(m);
+            if (flag == 0)
+            	break;
+            final int k = r.nextInt(flag);
             queue = queue + eff[k];
             output = output + dots[eff[k]] + " ";
             head = eff[k];
@@ -343,7 +334,24 @@ public class ShiYan1 {
         } catch (IOException e) {
         	log.warning(e.toString());
         }
+        
         final int[][] currentGraph = createDirectedGraph(str);
+        int temp = 0;
+        for (int i=0;i<2;i++)
+        {
+        	for (int j=0;j<2;j++)
+        	{
+        		if (currentGraph[i][j] != 0)
+        			temp = 1;
+        	}
+        }
+        if (temp == 0)
+        {
+        	System.out.println("Please re-run the program!");
+        	System.exit(0);
+        }
+        	
+        	
 
         System.out.println("Visualization of this directed graph:");
         final ShiYan1 p = new ShiYan1();
