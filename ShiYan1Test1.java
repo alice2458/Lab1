@@ -47,11 +47,11 @@ public class ShiYan1Test1 {
             byte[] buffer1 = new byte[size1];
             in1.read(buffer1);
             in1.close();
-            str = new String(buffer1, "UTF-8");
+            str0 = new String(buffer1, "UTF-8");
         } catch (IOException e) {
         	log0.warning(e.toString());
         }
-        int[][] Graph0 = ShiYan1.createDirectedGraph(str);
+        int[][] Graph0 = ShiYan1.createDirectedGraph(str0);
         
         String result0 = ShiYan1.randomWalk(Graph0);
         System.out.println(result0);

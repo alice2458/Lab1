@@ -4,14 +4,12 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-import org.junit.Assert;
 import org.junit.Test;
 
-public class ShiYan1Test {
-	
-	@Test
+public class ShiYan1Test2 {
 
-	public void testQueryBridgeWords() 
+	@Test
+	public void testCalcShortestPath() 
 	{
 		Scanner input = new Scanner(System.in);
         System.out.println("Please input the path of input file:");
@@ -30,22 +28,13 @@ public class ShiYan1Test {
         } catch (IOException e) {
         	log.warning(e.toString());
         }
-        int[][] Graph = ShiYan1.createDirectedGraph(str);
+        int[][] Graph1 = ShiYan1.createDirectedGraph(str);
         
-		String result1 = ShiYan1.queryBridgeWords(Graph ,"bu", "yi");
-		Assert.assertEquals("zai,", result1);
-		
-		String result2 = ShiYan1.queryBridgeWords(Graph ,"bu", "yiyi");
-		Assert.assertEquals("#yiyi", result2);
-		
-		String result3 = ShiYan1.queryBridgeWords(Graph ,"bubu", "yi");
-		Assert.assertEquals("#bubu", result3);
-		
-		String result4 = ShiYan1.queryBridgeWords(Graph ,"bubu", "yiyi");
-		Assert.assertEquals("#bubuyiyi", result4);
-		
-		String result5 = ShiYan1.queryBridgeWords(Graph ,"bu", "zai");
-		Assert.assertEquals("", result5);
-		//C:\Users\Alice\Desktop\Test.txt
-	}
+        ShiYan1 hei1 = new ShiYan1();
+        hei1.calcShortestPath(Graph1 ,"wu", "yun");
+        hei1.calcShortestPath(Graph1 ,"wuwu", "yun");
+        hei1.calcShortestPath(Graph1 ,"wu", "yunyun");
+        hei1.calcShortestPath(Graph1 ,"wuwu", "yunyun");
+        hei1.calcShortestPath(Graph1 ,"ku", "xin");
+        }
 }
