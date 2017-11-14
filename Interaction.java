@@ -14,45 +14,23 @@ public class Interaction
         return address;
 	}
 	
-	public static String getWord1()
-	{
-		final String word1 = input.next();
-		return word1;
-	}
+	public static String word1 = "";
 	
-	public static String getWord2()
-	{
-		final String word2 = input.next();
-		return word2;
-	}
+	public static String word2 = "";
 	
-	public static String getWord3()
-	{
-		final String word3 = input.next();
-		return word3;
-	}
+	public static String word3 = "";
+		
+	public static String word4 = "";
 	
-	public static String getWord4()
-	{
-		final String word4 = input.next();
-		return word4;
-	}
-	
-	public static String getNewWord()
-	{
-		final String newWord = input.nextLine();
-		return newWord;
-	}
+	public static String newWord = "";
 	
 	public static void main(final String[] args) throws IOException 
 	{
 		final PrintWriter out = new PrintWriter("myfile.txt");
-		Operation op = new Operation();
 		
 		System.out.println("Please input the path of input file:");
-        getPath();
-        op.create();
-        op.exe();
+		Operation.create();
+		Operation.exe();
         if (Data.temp == 0)
         {
         	System.out.println("Please re-run the program!");
@@ -74,31 +52,33 @@ public class Interaction
             switch (function) {
             case Operation.st1:
                 System.out.println("Please two words:");
-                String word1 = getWord1();
-                String word2 = getWord2();
+                input.nextLine();
+                word1 = input.nextLine();
+                word2 = input.nextLine();
                 int flag = 0;
-                if (Operation.ost1().charAt(0) == '#') {
-                    if (Operation.ost1().length() == 1 + word1.length()
+                String half = Operation.ost1();
+                if (half.charAt(0) == '#') {
+                    if (half.length() == 1 + word1.length()
                             + word2.length()) {
                         System.out.println("No " + word1 + " or " + word2
                                 + " in the graph!");
                     } else {
-                        System.out.println("No " + Operation.ost1().substring(
-                                1, Operation.ost1().length())
+                        System.out.println("No " + half.substring(
+                                1, half.length())
                                 + " in the graph!");
                     }
-                } else if (Operation.ost1().equals("")) {
+                } else if (half.equals("")) {
                     System.out.println("No bridge words from \"" + word1
                             + "\" to \"" + word2 + "\"!");
                 } else {
-                    for (int i = Operation.ost1().length() - 2; i > 0; i--) {
-                        if (Operation.ost1().charAt(i) == ',') {
+                    for (int i = half.length() - 2; i > 0; i--) {
+                        if (half.charAt(i) == ',') {
                             System.out.print("The bridge words from " + word1
                                     + " to " + word2 + " are:"
-                                    + Operation.ost1().substring(0, i + 1)
+                                    + half.substring(0, i + 1)
                                     + "and "
-                                    + Operation.ost1().substring(i + 1,
-                                    		Operation.ost1().length() - 1)
+                                    + half.substring(i + 1,
+                                    		half.length() - 1)
                                     + ".");
                             flag = 1;
                             break;
@@ -107,8 +87,8 @@ public class Interaction
                     if (flag == 0) {
                         System.out.print("The bridge word from " + word1
                                 + " to " + word2 + " is:"
-                                + Operation.ost1().substring(0,
-                                		Operation.ost1().length() - 1));
+                                + half.substring(0,
+                                     half.length() - 1));
                     }
                     System.out.println();
                 }
@@ -116,13 +96,14 @@ public class Interaction
             case Operation.st2:
                 System.out.println("Please input the source text:");
                 input.nextLine();
-                getNewWord();
+                newWord = input.nextLine();
                 System.out.println(Operation.ost2());
                 break;
             case Operation.st3:
                 System.out.println("Please input two words:");
-                getWord3();
-                getWord4();
+                input.nextLine();
+                word3 = input.nextLine();
+                word4 = input.nextLine();
                 Operation.ost3();
                 break;
             case Operation.st4:

@@ -4,13 +4,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Logger;
 
 public class Operation 
 {
-	public static final int MAX = 1005;
-  
-    static Logger log=Logger.getLogger(ShiYan1.class.getName());
+	public static final int MAX = 1000;
     
     static final int st1 = 1;
     
@@ -21,7 +18,7 @@ public class Operation
     static final int st4 = 4;
     
     static final int st5 = 5;
-    
+   
     public static int findAim(final String aim, final int k) {
         for (int i = 0; i < k; i++) {
             if (aim.equals(Data.dots[i])) {
@@ -281,7 +278,7 @@ public class Operation
         return output;
     }
     
-    public static void create()
+    public static void create()throws IOException
     {
         String str = "";
         String address = Interaction.getPath();
@@ -293,8 +290,9 @@ public class Operation
             in.read(buffer);
             in.close();
             str = new String(buffer, "UTF-8");
-        } catch (IOException e) {
-            Operation.log.warning(e.toString());
+        } catch (IOException e) 
+        {
+            e.printStackTrace();
         }
     	Data.currentGraph = createDirectedGraph(str);
     }
@@ -315,21 +313,21 @@ public class Operation
     public static String ost1()
     {
     	String ansBridgeWords = queryBridgeWords(Data.currentGraph,
-                Interaction.getWord1(), Interaction.getWord2());
+                Interaction.word1, Interaction.word2);
     	return ansBridgeWords;
     }
     
     public static String ost2()
     {
     	String bridgeWord = generateNewText(Data.currentGraph, 
-    			Interaction.getNewWord());
+    			Interaction.newWord);
     	return bridgeWord;
     }
     
     public static void ost3()
     {
     	calcShortestPath(Data.currentGraph, 
-    			Interaction.getWord3(), Interaction.getWord4());
+    			Interaction.word3, Interaction.word4);
     }
     
     public static String ost4()
