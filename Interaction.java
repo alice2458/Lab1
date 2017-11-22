@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class Interaction
 {
+	public static final int MAX = 1000;
+	
 	public static Scanner input = new Scanner(System.in);
 	
 	public static String getPath()
@@ -14,31 +16,20 @@ public class Interaction
         return address;
 	}
 	
-	public static String word1 = "";
-	
-	public static String word2 = "";
-	
-	public static String word3 = "";
-		
-	public static String word4 = "";
-	
-	public static String newWord = "";
-	
 	public static void main(final String[] args) throws IOException 
 	{
-		final PrintWriter out = new PrintWriter("myfile.txt");
-		
-		System.out.println("Please input the path of input file:");
-		Operation.create();
-		Operation.exe();
-        if (Data.temp == 0)
+        final PrintWriter out = new PrintWriter("myfile.txt");
+        System.out.println("Please input the path of input file:");
+        create.create_get();
+		create.exe();
+        if (Directed_Graph.temp == 0)
         {
         	System.out.println("Please re-run the program!");
         	System.exit(0);
         }
       
         System.out.println("Visualization of this directed graph:");
-        Operation.showDirectedGraph(Data.currentGraph);
+        create.showDirectedGraph(Directed_Graph.currentGraph);
         while (true) {
             System.out.println("Please select the function:");
             System.out.println("****************************");
@@ -50,35 +41,35 @@ public class Interaction
             System.out.println("****************************");
             final int function = input.nextInt();
             switch (function) {
-            case Operation.st1:
+            case 1:
                 System.out.println("Please two words:");
-                input.nextLine();
-                word1 = input.nextLine();
-                word2 = input.nextLine();
+                final String word1 = input.next();
+                final String word2 = input.next();
+                final String ansBridgeWords = find.queryBridgeWords(Directed_Graph.currentGraph,
+                        word1, word2);
                 int flag = 0;
-                String half = Operation.ost1();
-                if (half.charAt(0) == '#') {
-                    if (half.length() == 1 + word1.length()
+                if (ansBridgeWords.charAt(0) == '#') {
+                    if (ansBridgeWords.length() == 1 + word1.length()
                             + word2.length()) {
                         System.out.println("No " + word1 + " or " + word2
                                 + " in the graph!");
                     } else {
-                        System.out.println("No " + half.substring(
-                                1, half.length())
+                        System.out.println("No " + ansBridgeWords.substring(
+                                1, ansBridgeWords.length())
                                 + " in the graph!");
                     }
-                } else if (half.equals("")) {
+                } else if (ansBridgeWords.equals("")) {
                     System.out.println("No bridge words from \"" + word1
                             + "\" to \"" + word2 + "\"!");
                 } else {
-                    for (int i = half.length() - 2; i > 0; i--) {
-                        if (half.charAt(i) == ',') {
+                    for (int i = ansBridgeWords.length() - 2; i > 0; i--) {
+                        if (ansBridgeWords.charAt(i) == ',') {
                             System.out.print("The bridge words from " + word1
                                     + " to " + word2 + " are:"
-                                    + half.substring(0, i + 1)
+                                    + ansBridgeWords.substring(0, i + 1)
                                     + "and "
-                                    + half.substring(i + 1,
-                                    		half.length() - 1)
+                                    + ansBridgeWords.substring(i + 1,
+                                           ansBridgeWords.length() - 1)
                                     + ".");
                             flag = 1;
                             break;
@@ -87,29 +78,30 @@ public class Interaction
                     if (flag == 0) {
                         System.out.print("The bridge word from " + word1
                                 + " to " + word2 + " is:"
-                                + half.substring(0,
-                                     half.length() - 1));
+                                + ansBridgeWords.substring(0,
+                                  ansBridgeWords.length() - 1));
                     }
                     System.out.println();
                 }
                 break;
-            case Operation.st2:
+            case 2:
                 System.out.println("Please input the source text:");
                 input.nextLine();
-                newWord = input.nextLine();
-                System.out.println(Operation.ost2());
+                final String newWord = input.nextLine();
+                final String bridgeWord = createtxt.generateNewText(Directed_Graph.currentGraph, newWord);
+                System.out.println(bridgeWord);
                 break;
-            case Operation.st3:
+            case 3:
                 System.out.println("Please input two words:");
-                input.nextLine();
-                word3 = input.nextLine();
-                word4 = input.nextLine();
-                Operation.ost3();
+                final String word3 = input.next();
+                final String word4 = input.next();
+                shortpath.calcShortestPath(Directed_Graph.currentGraph, word3, word4);
                 break;
-            case Operation.st4:
+            case 4:
                 System.out.println("Random Walk Start:(Y to continue, N to end)");
-                String[] resultwords = new String[Operation.MAX];
-                resultwords = Operation.ost4().split(" ");
+                final String result = random.randomWalk(Directed_Graph.currentGraph);
+                String[] resultwords = new String[MAX];
+                resultwords = result.split(" ");
                 int n = 0;
                 do {
                     final String judge = input.nextLine();
@@ -130,7 +122,8 @@ public class Interaction
             default:
                 break;
             }
-            if (function == Operation.st5) {
+
+            if (function == 5) {
                 System.out.println("Exit");
                 break;
             }
@@ -139,3 +132,4 @@ public class Interaction
         out.close();
     }
 }
+//C:\Users\Alice\Desktop\Test.txt

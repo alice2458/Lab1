@@ -1,3 +1,5 @@
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,10 +9,9 @@ import java.util.logging.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ShiYan1Test {
-	
-	@Test
+public class findTest {
 
+	@Test
 	public void testQueryBridgeWords() 
 	{
 		Scanner input = new Scanner(System.in);
@@ -48,4 +49,5 @@ public class ShiYan1Test {
 		Assert.assertEquals("", result5);
 		//C:\Users\Alice\Desktop\Test.txt
 	}
+
 }
